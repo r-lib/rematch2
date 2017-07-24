@@ -1,3 +1,7 @@
+* Add `bind_re_match` that reads its input from a column in a data frame and
+binds the data frame returned by `re_match` as new columns on the original data
+frame.
+
 # 2.0.0.9000
 
 * Add `perl` argument to `re_match` and `re_match_all` for compatibility with
