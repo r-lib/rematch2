@@ -71,7 +71,7 @@ test_that("capture groups", {
   expect_equal(
     as.data.frame(res),
     asdf(
-      allreclist(
+      ...1 = allreclist(
         mrec(c("123", "456"), c(1L, 8L), c(3L, 10L)), norec(), norec(),
         mrec("1", 1L, 1L), mrec("123", 1, 3)
       ),
@@ -92,7 +92,7 @@ test_that("scalar text with capure groups", {
   expect_equal(
     as.data.frame(res),
     asdf(
-      allreclist(mrec(c("foo", "bar"), c(1L, 5L), c(3L, 7L))),
+      ...1 = allreclist(mrec(c("foo", "bar"), c(1L, 5L), c(3L, 7L))),
       .text = .text,
       .match = allreclist(mrec(c("foo", "bar"), c(1L, 5L), c(3L, 7L)))
     )
