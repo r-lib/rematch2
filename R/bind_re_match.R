@@ -22,6 +22,10 @@
 #' @seealso Standard-evaluation version \code{\link{bind_re_match_}} that is
 #'   suitable for programming.
 #'
+#' @examples
+#' match_cars <- tibble::rownames_to_column(mtcars)
+#' bind_re_match(match_cars, rowname, "^(?<make>\\w+) ?(?<model>.+)?$")
+#'
 #' @export
 bind_re_match <- function(df, from, ..., keep_match = FALSE) {
   bind_re_match_(df = df, from = deparse(substitute(from)), ..., keep_match = keep_match)
