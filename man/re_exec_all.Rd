@@ -83,3 +83,4 @@ allpos$first$end
 Other tidy regular expression matching: \code{\link{re_exec}},
   \code{\link{re_match_all}}, \code{\link{re_match}}
 }
+\concept{tidy regular expression matching}

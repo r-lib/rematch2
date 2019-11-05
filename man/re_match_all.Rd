@@ -69,3 +69,4 @@ re_match_all(notables, name_rex)
 Other tidy regular expression matching: \code{\link{re_exec_all}},
   \code{\link{re_exec}}, \code{\link{re_match}}
 }
+\concept{tidy regular expression matching}

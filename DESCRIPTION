@@ -10,7 +10,7 @@ License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/r-lib/rematch2#readme
 BugReports: https://github.com/r-lib/rematch2/issues
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Imports:
     tibble
 Suggests:

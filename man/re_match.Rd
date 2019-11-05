@@ -50,3 +50,4 @@ re_match(text = dates, pattern = isodaten)
 Other tidy regular expression matching: \code{\link{re_exec_all}},
   \code{\link{re_exec}}, \code{\link{re_match_all}}
 }
+\concept{tidy regular expression matching}
