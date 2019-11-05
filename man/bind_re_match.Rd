@@ -39,6 +39,11 @@ If named capture groups will result in multiple columns with the same
   column name, \code{\link[tibble]{repair_names}} will be called on the
   resulting table.
 }
+\examples{
+match_cars <- tibble::rownames_to_column(mtcars)
+bind_re_match(match_cars, rowname, "^(?<make>\\\\w+) ?(?<model>.+)?$")
+
+}
 \seealso{
 Standard-evaluation version \code{\link{bind_re_match_}} that is
   suitable for programming.
