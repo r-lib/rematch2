@@ -28,7 +28,7 @@ and `gregexpr` to return the results in tidy data frames.
 
 
 ```r
-source("https://install-github.me/r-lib/rematch2")
+install.packages("rematch2")
 ```
 
 ## Rematch vs rematch2
