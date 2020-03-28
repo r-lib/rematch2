@@ -121,3 +121,7 @@ exec1 <- function(text1, match1) {
 
   res
 }
+
+new_rematch_allrecords <- function(x) {
+  structure(x, class = c("rematch_allrecords", "list"))
+}
