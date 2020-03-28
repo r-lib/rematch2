@@ -30,7 +30,7 @@ norec <- function() {
 }
 
 reclist <- function(...) {
-  structure(list(...), class = "rematch_records")
+  new_rematch_records(list(...))
 }
 
 allreclist <- function(...) {

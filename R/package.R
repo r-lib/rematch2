@@ -5,7 +5,7 @@
 #' groups from the match of a regular expression to a character vector.
 #' See \code{\link{re_match}}.
 #'
-#' @importFrom tibble tibble
+#' @importFrom tibble tibble new_tibble
 "_PACKAGE"
 
 #' Extract Regular Expression Matches Into a Data Frame
