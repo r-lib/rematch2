@@ -1,15 +1,12 @@
-
-context("re_exec")
-
 test_that("corner cases", {
 
-  res <- re_exec(.text <- c("foo", "bar"), "")
+  res <- re_exec_val(.text <- c("foo", "bar"), "")
   expect_equal(
     as.data.frame(res),
     asdf(.text = .text, .match = reclist(mrec("", 1, 0), mrec("", 1, 0)))
   )
 
-  res <- re_exec(.text <- c("foo", "", "bar"), "")
+  res <- re_exec_val(.text <- c("foo", "", "bar"), "")
   expect_equal(
     as.data.frame(res),
     asdf(
@@ -18,25 +15,25 @@ test_that("corner cases", {
     )
   )
 
-  res <- re_exec(.text <- character(), "")
+  res <- re_exec_val(.text <- character(), "")
   expect_equal(as.data.frame(res), asdf(.text = .text, .match = reclist()))
 
-  res <- re_exec(.text <- character(), "foo")
+  res <- re_exec_val(.text <- character(), "foo")
   expect_equal(as.data.frame(res), asdf(.text = .text, .match = reclist()))
 
-  res <- re_exec(.text <- character(), "foo (g1) (g2)")
+  res <- re_exec_val(.text <- character(), "foo (g1) (g2)")
   expect_equal(
     as.data.frame(res),
     asdf(reclist(), reclist(), .text = .text, .match = reclist())
   )
 
-  res <- re_exec(.text <- character(), "foo (g1) (?<name>g2)")
+  res <- re_exec_val(.text <- character(), "foo (g1) (?<name>g2)")
   expect_equal(
     as.data.frame(res),
     asdf(reclist(), name = reclist(), .text = .text, .match = reclist())
   )
 
-  res <- re_exec(.text <- "not", "foo")
+  res <- re_exec_val(.text <- "not", "foo")
   expect_equal(
     as.data.frame(res),
     asdf(.text = .text, .match = reclist(mrec(NA, NA, NA)))
@@ -69,7 +66,7 @@ test_that("not so corner cases", {
     )
   )
   expect_equal(
-    as.data.frame(re_exec(text = dates, pattern = isodate)),
+    as.data.frame(re_exec_val(text = dates, pattern = isodate)),
     expected
   )
 
@@ -96,7 +93,7 @@ test_that("not so corner cases", {
   )
 
   expect_equal(
-    as.data.frame(re_exec(text = dates, pattern = isodaten)),
+    as.data.frame(re_exec_val(text = dates, pattern = isodaten)),
     expected
   )
 })
@@ -107,7 +104,7 @@ test_that("UTF8", {
   str <- "Gábor Csárdi"
   pat <- "Gábor"
   Encoding(str) <- Encoding(pat) <- "UTF-8"
-  res <- re_exec(str, pat)
+  res <- re_exec_val(str, pat)
   expect_equal(
     as.data.frame(res),
     asdf(.text = str, .match = reclist(mrec(pat, 1, 5)))
@@ -118,7 +115,7 @@ test_that("UTF8", {
 
 test_that("text is scalar & capture groups", {
 
-  res <- re_exec(.text <- "foo bar", "(\\w+) (\\w+)")
+  res <- re_exec_val(.text <- "foo bar", "(\\w+) (\\w+)")
   expect_equal(
     as.data.frame(res),
     asdf(
@@ -129,7 +126,7 @@ test_that("text is scalar & capture groups", {
     )
   )
 
-  res <- re_exec(.text <- "foo bar", "(?<g1>\\w+) (?<g2>\\w+)")
+  res <- re_exec_val(.text <- "foo bar", "(?<g1>\\w+) (?<g2>\\w+)")
   expect_equal(
     as.data.frame(res),
     asdf(
@@ -147,7 +144,7 @@ test_that("perl argument", {
   # be supported if we want this to be a drop in replacement for other functions
   # (e.g. re-implenting `strsplit` with a rematch2 backend)
 
-  res <- re_exec(.text <- "foo bar", "\\w+", perl = TRUE)
+  res <- re_exec_val(.text <- "foo bar", "\\w+", perl = TRUE)
   expect_equal(
     as.data.frame(res),
     asdf(
@@ -157,7 +154,7 @@ test_that("perl argument", {
   )
   # actually check that the capture group doesn't show up
 
-  res.tre <- re_exec(.text <- "foo bar", "\\w+ (\\w+)", perl = FALSE)
-  res.perl <- re_exec(.text <- "foo bar", "\\w+ (\\w+)", perl= TRUE)
+  res.tre <- re_exec_val(.text <- "foo bar", "\\w+ (\\w+)", perl = FALSE)
+  res.perl <- re_exec_val(.text <- "foo bar", "\\w+ (\\w+)", perl= TRUE)
   expect_true(ncol(as.data.frame(res.perl)) == 3 && ncol(res.tre) == 2)
 })

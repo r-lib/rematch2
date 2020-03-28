@@ -1,9 +1,6 @@
+test_that("re_exec_val intexing", {
 
-context("indexing")
-
-test_that("re_exec intexing", {
-
-  res <- re_exec(character(), "foo([0-9]+)")
+  res <- re_exec_val(character(), "foo([0-9]+)")
   expect_identical(res[[1]]$match, character())
   expect_identical(res[[1]]$start, integer())
   expect_identical(res[[1]]$end, integer())
@@ -20,7 +17,7 @@ test_that("re_exec intexing", {
     "  Ben Franklin and Jefferson Davis",
     "\tMillard Fillmore"
   )
-  pos <- re_exec(notables, name_rex)
+  pos <- re_exec_val(notables, name_rex)
 
   expect_identical(pos$first$match, c("Ben", "Millard"))
   expect_identical(pos$first$start, c(3L, 2L))
@@ -35,7 +32,7 @@ test_that("re_exec intexing", {
   expect_identical(pos$.match$end, c(14L, 17L))
 })
 
-test_that("re_exec_all indexing", {
+test_that("re_exec_all_val indexing", {
 
   name_rex <- paste0(
     "(?<first>[[:upper:]][[:lower:]]+) ",
@@ -45,7 +42,7 @@ test_that("re_exec_all indexing", {
     "  Ben Franklin and Jefferson Davis",
     "\tMillard Fillmore"
   )
-  allpos <- re_exec_all(notables, name_rex)
+  allpos <- re_exec_all_val(notables, name_rex)
 
   expect_identical(
     allpos$first$match,
@@ -79,8 +76,8 @@ test_that("$ errors", {
     "  Ben Franklin and Jefferson Davis",
     "\tMillard Fillmore"
   )
-  pos <- re_exec(notables, name_rex)
-  allpos <- re_exec_all(notables, name_rex)
+  pos <- re_exec_val(notables, name_rex)
+  allpos <- re_exec_all_val(notables, name_rex)
 
   expect_error(pos$first$foo)
   expect_error(allpos$first$foo)

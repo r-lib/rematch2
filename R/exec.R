@@ -83,7 +83,8 @@ re_exec <- function(text, pattern, perl=TRUE, ...) {
 
   res <- new_tibble(
     list(text, matchlist),
-    names = c(".text", ".match")
+    names = c(".text", ".match"),
+    nrow = length(text)
   )
 
   if (!is.null(attr(match, "capture.start"))) {
@@ -114,7 +115,8 @@ re_exec <- function(text, pattern, perl=TRUE, ...) {
 
     res <- new_tibble(
       c(grouplists, res),
-      names = c(attr(match, "capture.names"), ".text", ".match")
+      names = c(attr(match, "capture.names"), ".text", ".match"),
+      nrow = length(res[[1]])
     )
   }
 
