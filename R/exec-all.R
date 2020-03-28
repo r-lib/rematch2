@@ -41,7 +41,9 @@ re_exec_all <- function(text, pattern, perl = TRUE, ...) {
   if (length(text) == 0) {
     res <- empty_result(text, pattern, perl = perl, ...)
     for (i in seq_along(res)) {
-      if (is.list(res[[i]])) class(res[[i]]) <- "rematch_allrecords"
+      if (is.list(res[[i]])) {
+        res[[i]] <- new_rematch_allrecords(res[[i]])
+      }
     }
     return(res)
   }
@@ -69,7 +71,7 @@ re_exec_all <- function(text, pattern, perl = TRUE, ...) {
   }
 
   res <- lapply(seq_along(res[[1]]), function(i) {
-    structure(lapply(res, "[[", i), class = "rematch_allrecords")
+    new_rematch_allrecords(lapply(res, "[[", i))
   })
 
   res <- structure(

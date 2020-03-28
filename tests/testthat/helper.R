@@ -34,5 +34,9 @@ reclist <- function(...) {
 }
 
 allreclist <- function(...) {
-  structure(list(...), class = "rematch_allrecords")
+  new_rematch_allrecords(list(...))
+}
+
+new_rematch_allrecords <- function(x) {
+  structure(x, class = c("rematch_allrecords", "list"))
 }
