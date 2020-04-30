@@ -1,5 +1,5 @@
 
-# dev version
+# 2.1.2
 
 * rematch2 is now really compatible with both tibble 2.x.y and tibble
   3.0.0 (@krlmlr, #12).
