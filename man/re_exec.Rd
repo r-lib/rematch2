@@ -74,7 +74,7 @@ name_rex <- paste0(
 )
 notables <- c(
   "  Ben Franklin and Jefferson Davis",
-  "\\tMillard Fillmore"
+  "\tMillard Fillmore"
 )
 # Match first occurrence
 pos <- re_exec(notables, name_rex)
@@ -88,7 +88,9 @@ pos$first$end
 \seealso{
 \code{\link[base]{regexpr}}, which this function wraps
 
-Other tidy regular expression matching: \code{\link{re_exec_all}},
-  \code{\link{re_match_all}}, \code{\link{re_match}}
+Other tidy regular expression matching: 
+\code{\link{re_exec_all}()},
+\code{\link{re_match_all}()},
+\code{\link{re_match}()}
 }
 \concept{tidy regular expression matching}

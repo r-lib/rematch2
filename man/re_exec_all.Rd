@@ -66,7 +66,7 @@ name_rex <- paste0(
 )
 notables <- c(
   "  Ben Franklin and Jefferson Davis",
-  "\\tMillard Fillmore"
+  "\tMillard Fillmore"
 )
 # All occurrences
 allpos <- re_exec_all(notables, name_rex)
@@ -80,7 +80,9 @@ allpos$first$end
 \seealso{
 \code{\link[base]{gregexpr}}, which this function wraps
 
-Other tidy regular expression matching: \code{\link{re_exec}},
-  \code{\link{re_match_all}}, \code{\link{re_match}}
+Other tidy regular expression matching: 
+\code{\link{re_exec}()},
+\code{\link{re_match_all}()},
+\code{\link{re_match}()}
 }
 \concept{tidy regular expression matching}

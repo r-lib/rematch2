@@ -1,9 +1,6 @@
-
-context("re_exec_all")
-
 test_that("corner cases", {
 
-  res <- re_exec_all(.text <- c("foo", "bar"), "")
+  res <- re_exec_all_val(.text <- c("foo", "bar"), "")
   expect_equal(
     as.data.frame(res),
     asdf(
@@ -23,7 +20,7 @@ test_that("corner cases", {
     )
   )
 
-  res <- re_exec_all(.text <- c("", "bar"), "")
+  res <- re_exec_all_val(.text <- c("", "bar"), "")
   expect_equal(
     as.data.frame(res),
     asdf(
@@ -43,13 +40,13 @@ test_that("corner cases", {
     )
   )
 
-  res <- re_exec_all(.text <- character(), "")
+  res <- re_exec_all_val(.text <- character(), "")
   expect_equal(as.data.frame(res), asdf(.text = .text, .match = allreclist()))
 
-  res <- re_exec_all(.text <- character(), "foo")
+  res <- re_exec_all_val(.text <- character(), "foo")
   expect_equal(as.data.frame(res), asdf(.text = .text, .match = allreclist()))
 
-  res <- re_exec_all(.text <- "not", "foo")
+  res <- re_exec_all_val(.text <- "not", "foo")
   expect_equal(
     as.data.frame(res),
     asdf(
@@ -64,7 +61,7 @@ test_that("capture groups", {
 
   pattern <- "([0-9]+)"
 
-  res <- re_exec_all(
+  res <- re_exec_all_val(
     .text <- c("123xxxx456", "", "xxx", "1", "123"),
     pattern
   )
@@ -88,7 +85,7 @@ test_that("capture groups", {
 
 test_that("scalar text with capure groups", {
 
-  res <- re_exec_all(.text <- "foo bar", "\\b(\\w+)\\b")
+  res <- re_exec_all_val(.text <- "foo bar", "\\b(\\w+)\\b")
   expect_equal(
     as.data.frame(res),
     asdf(
@@ -98,7 +95,7 @@ test_that("scalar text with capure groups", {
     )
   )
 
-  res <- re_exec_all(.text <- "foo bar", "\\b(?<word>\\w+)\\b")
+  res <- re_exec_all_val(.text <- "foo bar", "\\b(?<word>\\w+)\\b")
   expect_equal(
     as.data.frame(res),
     asdf(

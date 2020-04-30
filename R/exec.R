@@ -75,18 +75,16 @@ re_exec <- function(text, pattern, perl=TRUE, ...) {
 
   names <- c("match", "start", "end")
 
-  matchlist <- structure(
+  matchlist <- new_rematch_records(
     lapply(seq_along(text), function(i) {
       structure(list(matchstr[i], start[i], end[i]), names = names)
-    }),
-    class = "rematch_records"
+    })
   )
 
-  res <- structure(
+  res <- new_tibble(
     list(text, matchlist),
     names = c(".text", ".match"),
-    row.names = seq_along(text),
-    class = c("tbl_df", "tbl", "data.frame")
+    nrow = length(text)
   )
 
   if (!is.null(attr(match, "capture.start"))) {
@@ -104,25 +102,27 @@ re_exec <- function(text, pattern, perl=TRUE, ...) {
     grouplists <- lapply(
       seq_along(attr(match, "capture.names")),
       function(g) {
-        structure(
+        new_rematch_records(
           lapply(seq_along(text), function(i) {
             structure(
               list(groupstr[i, g], gstart[i, g], gend[i, g]),
               names = names
             )
-          }),
-          class = "rematch_records"
+          })
         )
       }
     )
 
-    res <- structure(
+    res <- new_tibble(
       c(grouplists, res),
       names = c(attr(match, "capture.names"), ".text", ".match"),
-      row.names = seq_along(text),
-      class = c("tbl_df", "tbl", "data.frame")
+      nrow = length(res[[1]])
     )
   }
 
   res
+}
+
+new_rematch_records <- function(x) {
+  structure(x, class = c("rematch_records", "list"))
 }

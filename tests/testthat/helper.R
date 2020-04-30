@@ -30,9 +30,21 @@ norec <- function() {
 }
 
 reclist <- function(...) {
-  structure(list(...), class = "rematch_records")
+  new_rematch_records(list(...))
 }
 
 allreclist <- function(...) {
   new_rematch_allrecords(list(...))
+}
+
+re_exec_val <- function(...) {
+  res <- re_exec(...)
+  expect_silent(tibble::validate_tibble(res))
+  res
+}
+
+re_exec_all_val <- function(...) {
+  res <- re_exec_all(...)
+  expect_silent(tibble::validate_tibble(res))
+  res
 }
