@@ -69,12 +69,13 @@ re_match_all <- function(text, pattern, perl=TRUE, ...) {
     res,
     names = c(attr(match[[1]], "capture.names"), ".match"),
     row.names = seq_along(text),
-    class = c("tbl_df", "tbl", "data.frame")
+    class = "data.frame"
   )
 
   res$.text <- text
   nc <- ncol(res)
-  res[, c(seq_len(nc - 2), nc, nc - 1)]
+  res <- res[, c(seq_len(nc - 2), nc, nc - 1)]
+  as_tibble(res)
 }
 
 match1 <- function(text1, match1) {
