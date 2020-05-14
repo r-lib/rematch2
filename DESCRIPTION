@@ -1,6 +1,6 @@
 Package: rematch2
 Title: Tidy Output from Regular Expression Matching
-Version: 2.1.2
+Version: 2.1.2.9000
 Authors@R: c(
     person("Gábor", "Csárdi", email = "csardi.gabor@gmail.com", role = c("aut", "cre")),
     person("Matthew", "Lincoln", email = "matthew.d.lincoln@gmail.com", role = c("ctb")))
