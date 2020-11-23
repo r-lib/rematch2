@@ -55,7 +55,7 @@ jobs:
       - name: Install pak and query dependencies
         run: |
           install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
-          writeLines(pak::pkg_deps("local::.", dependencies = TRUE), ".github/r-depends")
+          writeLines(pak::pkg_deps_tree("local::.", dependencies = TRUE), ".github/r-depends")
         shell: Rscript {0}
 
       - name: Cache R packages
