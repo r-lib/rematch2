@@ -81,10 +81,11 @@ re_exec <- function(text, pattern, perl=TRUE, ...) {
     })
   )
 
-  res <- new_tibble(
+  res <- structure(
     list(text, matchlist),
     names = c(".text", ".match"),
-    nrow = length(text)
+    row.names = seq_along(text),
+    class = "data.frame"
   )
 
   if (!is.null(attr(match, "capture.start"))) {
@@ -113,10 +114,11 @@ re_exec <- function(text, pattern, perl=TRUE, ...) {
       }
     )
 
-    res <- new_tibble(
+    res <- structure(
       c(grouplists, res),
       names = c(attr(match, "capture.names"), ".text", ".match"),
-      nrow = length(res[[1]])
+      row.names = seq_along(text),
+      class = "data.frame"
     )
   }
 

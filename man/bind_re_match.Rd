@@ -26,7 +26,8 @@ Defaults to \code{FALSE}, to avoid column name collisions in the case that
 \description{
 Taking a data frame and a column name as input, this function will run
 \code{\link{re_match}} and bind the results as new columns to the original
-table., returning a \code{\link[tibble]{tibble}}. This makes it friendly for
+table., returning a \code{\link[tibble]{tibble}} if the tibble package is
+installed, a \code{data.frame} otherwise. This makes it friendly for
 pipe-oriented programming with \link[magrittr]{magrittr}.
 }
 \section{Functions}{
@@ -40,7 +41,8 @@ If named capture groups will result in multiple columns with the same
   resulting table.
 }
 \examples{
-match_cars <- tibble::rownames_to_column(mtcars)
+match_cars <- mtcars
+match_cars$rowname <- rownames(mtcars)
 bind_re_match(match_cars, rowname, "^(?<make>\\\\w+) ?(?<model>.+)?$")
 
 }

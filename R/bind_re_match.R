@@ -2,7 +2,8 @@
 #'
 #' Taking a data frame and a column name as input, this function will run
 #' \code{\link{re_match}} and bind the results as new columns to the original
-#' table., returning a \code{\link[tibble]{tibble}}. This makes it friendly for
+#' table., returning a \code{\link[tibble]{tibble}} if the tibble package is
+#' installed, a \code{data.frame} otherwise. This makes it friendly for
 #' pipe-oriented programming with \link[magrittr]{magrittr}.
 #'
 #' @note If named capture groups will result in multiple columns with the same
@@ -23,7 +24,8 @@
 #'   suitable for programming.
 #'
 #' @examples
-#' match_cars <- tibble::rownames_to_column(mtcars)
+#' match_cars <- mtcars
+#' match_cars$rowname <- rownames(mtcars)
 #' bind_re_match(match_cars, rowname, "^(?<make>\\w+) ?(?<model>.+)?$")
 #'
 #' @export
@@ -36,7 +38,9 @@ bind_re_match <- function(df, from, ..., keep_match = FALSE) {
 bind_re_match_ <- function(df, from, ..., keep_match = FALSE) {
 
   stopifnot(is.data.frame(df))
-  if (!tibble::has_name(df, from))
+  stopifnot(is_installed("tibble"))
+
+  if (!from %in% names(df))
     stop(from, " is not present in the data frame.")
 
   res <- re_match(text = df[[from]], ...)

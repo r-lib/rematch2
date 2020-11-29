@@ -5,7 +5,6 @@
 #' groups from the match of a regular expression to a character vector.
 #' See \code{\link{re_match}}.
 #'
-#' @importFrom tibble tibble new_tibble
 "_PACKAGE"
 
 #' Extract Regular Expression Matches Into a Data Frame
@@ -78,6 +77,6 @@ re_match <- function(text, pattern, perl = TRUE, ...) {
   }
 
   names(res) <- c(attr(match, "capture.names"), ".text", ".match")
-  class(res) <- c("tbl_df", "tbl", class(res))
-  res
+
+  as_tibble(res)
 }
