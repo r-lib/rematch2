@@ -46,6 +46,7 @@ install.packages("rematch2")
 
 Note that `rematch2` is not compatible with the original `rematch` package.
 There are at least three major changes:
+
 * The order of the arguments for the functions is different. In
   `rematch2` the `text` vector is first, and `pattern` is second.
 * In the result, `.match` is the last column instead of the first.
