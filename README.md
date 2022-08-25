@@ -36,11 +36,13 @@ install.packages("rematch2")
 ## Rematch vs rematch2
 
 Note that `rematch2` is not compatible with the original `rematch`
-package. There are at least three major changes: \* The order of the
-arguments for the functions is different. In `rematch2` the `text`
-vector is first, and `pattern` is second. \* In the result, `.match` is
-the last column instead of the first. \* `rematch2` returns `tibble`
-data frames. See <https://github.com/hadley/tibble>.
+package. There are at least three major changes:
+
+-   The order of the arguments for the functions is different. In
+    `rematch2` the `text` vector is first, and `pattern` is second.
+-   In the result, `.match` is the last column instead of the first.
+-   `rematch2` returns `tibble` data frames. See
+    <https://github.com/hadley/tibble>.
 
 ## Usage
 
@@ -111,14 +113,15 @@ github_rx  <- sprintf(
 )
 re_match(text = github_repos, pattern = github_rx)
 #> # A tibble: 6 × 9
-#>   owner        repo      subdir ref     pull  release  catchall .text   .match  
-#>   <chr>        <chr>     <chr>  <chr>   <chr> <chr>    <chr>    <chr>   <chr>   
-#> 1 "metacran"   "crandb"  ""     ""      ""    ""       ""       metacr… metacra…
-#> 2 "jeroenooms" "curl"    ""     "v0.9.… ""    ""       ""       jeroen… jeroeno…
-#> 3 "jimhester"  "covr"    ""     ""      "47"  ""       ""       jimhes… jimhest…
-#> 4 "hadley"     "dplyr"   ""     ""      ""    "*relea… ""       hadley… hadley/…
-#> 5 "r-lib"      "remotes" ""     "550a3… ""    ""       ""       r-lib/… r-lib/r…
-#> 6 ""           ""        ""     ""      ""    ""       "/$&@R6… /$&@R6… /$&@R64…
+#>   owner        repo      subdir ref           pull  release catch…¹ .text .match
+#>   <chr>        <chr>     <chr>  <chr>         <chr> <chr>   <chr>   <chr> <chr> 
+#> 1 "metacran"   "crandb"  ""     ""            ""    ""      ""      meta… metac…
+#> 2 "jeroenooms" "curl"    ""     "v0.9.3"      ""    ""      ""      jero… jeroe…
+#> 3 "jimhester"  "covr"    ""     ""            "47"  ""      ""      jimh… jimhe…
+#> 4 "hadley"     "dplyr"   ""     ""            ""    "*rele… ""      hadl… hadle…
+#> 5 "r-lib"      "remotes" ""     "550a3c7d3f9… ""    ""      ""      r-li… r-lib…
+#> 6 ""           ""        ""     ""            ""    ""      "/$&@R… /$&@… /$&@R…
+#> # … with abbreviated variable name ¹​catchall
 ```
 
 ### All matches
@@ -176,10 +179,10 @@ data frame in this respect.
 pos <- re_exec(notables, name_rex)
 pos
 #> # A tibble: 2 × 4
-#>   first            last             .text                                .match 
-#>   <rmtch_rc>       <rmtch_rc>       <chr>                                <rmtch>
-#> 1 <named list [3]> <named list [3]> "  Ben Franklin and Jefferson Davis" <named…
-#> 2 <named list [3]> <named list [3]> "\tMillard Fillmore"                 <named…
+#>   first            last             .text                           .match      
+#>   <rmtch_rc>       <rmtch_rc>       <chr>                           <rmtch_rc>  
+#> 1 <named list [3]> <named list [3]> "  Ben Franklin and Jefferson … <named list>
+#> 2 <named list [3]> <named list [3]> "\tMillard Fillmore"            <named list>
 ```
 
 Unfortunately R does not allow hierarchical data frames (i.e. a column
@@ -204,10 +207,10 @@ arbitrary number of matches:
 allpos <- re_exec_all(notables, name_rex)
 allpos
 #> # A tibble: 2 × 4
-#>   first            last             .text                                .match 
-#>   <rmtch_ll>       <rmtch_ll>       <chr>                                <rmtch>
-#> 1 <named list [3]> <named list [3]> "  Ben Franklin and Jefferson Davis" <named…
-#> 2 <named list [3]> <named list [3]> "\tMillard Fillmore"                 <named…
+#>   first            last             .text                           .match      
+#>   <rmtch_ll>       <rmtch_ll>       <chr>                           <rmtch_ll>  
+#> 1 <named list [3]> <named list [3]> "  Ben Franklin and Jefferson … <named list>
+#> 2 <named list [3]> <named list [3]> "\tMillard Fillmore"            <named list>
 ```
 
 ``` r
