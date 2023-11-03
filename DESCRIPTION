@@ -2,22 +2,22 @@ Package: rematch2
 Title: Tidy Output from Regular Expression Matching
 Version: 2.1.2.9000
 Authors@R: c(
-    person("Gábor", "Csárdi", email = "csardi.gabor@gmail.com", role = c("aut", "cre")),
-    person("Matthew", "Lincoln", email = "matthew.d.lincoln@gmail.com", role = c("ctb")),
+    person("Gábor", "Csárdi", , "csardi.gabor@gmail.com", role = c("aut", "cre")),
+    person("Matthew", "Lincoln", , "matthew.d.lincoln@gmail.com", role = "ctb"),
     person("Posit Software, PBC", role = c("cph", "fnd"))
-    )
+  )
 Description: Wrappers on 'regexpr' and 'gregexpr' to return the match
     results in tidy data frames.
 License: MIT + file LICENSE
-LazyData: true
 URL: https://github.com/r-lib/rematch2#readme
 BugReports: https://github.com/r-lib/rematch2/issues
-RoxygenNote: 7.2.3
 Imports:
     tibble
 Suggests:
     covr,
     testthat (>= 3.0.0)
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
 Config/testthat/edition: 3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
