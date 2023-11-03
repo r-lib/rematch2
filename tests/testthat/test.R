@@ -1,6 +1,3 @@
-
-context("re_match")
-
 test_that("corner cases", {
 
   res <- re_match(.text <- c("foo", "bar"), "")

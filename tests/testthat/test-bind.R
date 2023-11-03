@@ -1,6 +1,3 @@
-
-context("bind_re_match")
-
 test_that("normal cases", {
   match_cars <- tibble::rownames_to_column(mtcars)
   match_cars_nse <- bind_re_match(match_cars, rowname, "^(?<make>\\w+) ?(?<model>.+)?$")
