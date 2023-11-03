@@ -9,22 +9,22 @@ re_match(text, pattern, perl = TRUE, ...)
 \arguments{
 \item{text}{Character vector.}
 
-\item{pattern}{A regular expression. See \code{\link[base]{regex}} for more
+\item{pattern}{A regular expression. See \code{\link[base:regex]{base::regex()}} for more
 about regular expressions.}
 
 \item{perl}{logical should perl compatible regular expressions be used?
 Defaults to TRUE, setting to FALSE will disable capture groups.}
 
-\item{...}{Additional arguments to pass to \code{\link[base]{regexpr}}.}
+\item{...}{Additional arguments to pass to \code{\link[base:grep]{base::regexpr()}}.}
 }
 \value{
 A data frame of character vectors: one column per capture
-  group, named if the group was named, and additional columns for
-  the input text and the first matching (sub)string. Each row
-  corresponds to an element in the \code{text} vector.
+group, named if the group was named, and additional columns for
+the input text and the first matching (sub)string. Each row
+corresponds to an element in the \code{text} vector.
 }
 \description{
-\code{re_match} wraps \code{\link[base]{regexpr}} and returns the
+\code{re_match} wraps \code{\link[base:grep]{base::regexpr()}} and returns the
 match results in a convenient data frame. The data frame has one
 column for each capture group if \code{perl=TRUE}, and one final columns
 called \code{.match} for the matching (sub)string. The columns of the capture
@@ -32,7 +32,7 @@ groups are named if the groups themselves are named.
 }
 \note{
 \code{re_match} uses PCRE compatible regular expressions by default
-(i.e. \code{perl = TRUE} in \code{\link[base]{regexpr}}).  You can switch
+(i.e. \code{perl = TRUE} in \code{\link[base:grep]{base::regexpr()}}).  You can switch
 this off but if you do so capture groups will no longer be reported as they
 are only supported by PCRE.
 }

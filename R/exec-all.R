@@ -6,11 +6,11 @@
 #'
 #' Match a regular expression to a string, and return matches, match positions,
 #' and capture groups.  This function is like its
-#' \code{\link[=re_match_all]{match}} counterpart, except it returns
+#' [`match()`][re_match_all] counterpart, except it returns
 #' match/capture group start and end positions in addition to the matched
 #' values.
 #'
-#' @seealso \code{\link[base]{gregexpr}}, which this function wraps
+#' @seealso [base::gregexpr()], which this function wraps
 #' @return A tidy data frame (see Section \dQuote{Tidy Data}).  The entries
 #'   within the match records within the list columns will be one vectors
 #'   as long as there are matches for the corresponding text element.

@@ -15,14 +15,14 @@ re_exec(text, pattern, perl = TRUE, ...)
 \arguments{
 \item{text}{Character vector.}
 
-\item{pattern}{A regular expression. See \code{\link[base]{regex}} for more
+\item{pattern}{A regular expression. See \code{\link[base:regex]{base::regex()}} for more
 about regular expressions.}
 
 \item{perl}{logical should perl compatible regular expressions be used?
 Defaults to TRUE, setting to FALSE will disable capture groups.}
 
 \item{...}{Additional arguments to pass to
-\code{\link[base]{gregexpr}} (or \code{\link[base]{regexpr}} if
+\code{\link[base:grep]{base::gregexpr()}} (or \code{\link[base:grep]{base::regexpr()}} if
 \code{text} is of length zero).}
 
 \item{x}{Object returned by \code{re_exec} or \code{re_exec_all}.}
@@ -31,12 +31,12 @@ Defaults to TRUE, setting to FALSE will disable capture groups.}
 }
 \value{
 A tidy data frame (see Section \dQuote{Tidy Data}).  Match record
-  entries are one length vectors that are set to NA if there is no match.
+entries are one length vectors that are set to NA if there is no match.
 }
 \description{
 Match a regular expression to a string, and return matches, match positions,
 and capture groups.  This function is like its
-\code{\link[=re_match]{match}} counterpart, except it returns match/capture
+\code{\link[=re_match]{match()}} counterpart, except it returns match/capture
 group start and end positions in addition to the matched values.
 }
 \section{Tidy Data}{
@@ -86,7 +86,7 @@ pos$first$start
 pos$first$end
 }
 \seealso{
-\code{\link[base]{regexpr}}, which this function wraps
+\code{\link[base:grep]{base::regexpr()}}, which this function wraps
 
 Other tidy regular expression matching: 
 \code{\link{re_exec_all}()},

@@ -9,25 +9,25 @@ re_exec_all(text, pattern, perl = TRUE, ...)
 \arguments{
 \item{text}{Character vector.}
 
-\item{pattern}{A regular expression. See \code{\link[base]{regex}} for more
+\item{pattern}{A regular expression. See \code{\link[base:regex]{base::regex()}} for more
 about regular expressions.}
 
 \item{perl}{logical should perl compatible regular expressions be used?
 Defaults to TRUE, setting to FALSE will disable capture groups.}
 
 \item{...}{Additional arguments to pass to
-\code{\link[base]{gregexpr}} (or \code{\link[base]{regexpr}} if
+\code{\link[base:grep]{base::gregexpr()}} (or \code{\link[base:grep]{base::regexpr()}} if
 \code{text} is of length zero).}
 }
 \value{
 A tidy data frame (see Section \dQuote{Tidy Data}).  The entries
-  within the match records within the list columns will be one vectors
-  as long as there are matches for the corresponding text element.
+within the match records within the list columns will be one vectors
+as long as there are matches for the corresponding text element.
 }
 \description{
 Match a regular expression to a string, and return matches, match positions,
 and capture groups.  This function is like its
-\code{\link[=re_match_all]{match}} counterpart, except it returns
+\code{\link[=re_match_all]{match()}} counterpart, except it returns
 match/capture group start and end positions in addition to the matched
 values.
 }
@@ -78,7 +78,7 @@ allpos$first$start
 allpos$first$end
 }
 \seealso{
-\code{\link[base]{gregexpr}}, which this function wraps
+\code{\link[base:grep]{base::gregexpr()}}, which this function wraps
 
 Other tidy regular expression matching: 
 \code{\link{re_exec}()},

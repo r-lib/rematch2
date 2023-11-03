@@ -1,20 +1,20 @@
 
 #' Extract All Regular Expression Matches Into a Data Frame
 #'
-#' This function is a thin wrapper on the \code{\link[base]{gregexpr}}
+#' This function is a thin wrapper on the [base::gregexpr()]
 #' base R function, to extract the matching (sub)strings as a data frame.
 #' It extracts all matches, and potentially their capture groups as well.
 #'
 #' @inheritSection re_exec Tidy Data
 #'
 #' @note If the input text character vector has length zero,
-#'   \code{\link[base]{regexpr}} is called instead of
-#'   \code{\link[base]{gregexpr}}, because the latter cannot extract the
+#'   [base::regexpr()] is called instead of
+#'   [base::gregexpr()], because the latter cannot extract the
 #'   number and names of the capture groups in this case.
 #'
 #' @param ... Additional arguments to pass to
-#'   \code{\link[base]{gregexpr}} (or \code{\link[base]{regexpr}} if
-#'   \code{text} is of length zero).
+#'   [base::gregexpr()] (or [base::regexpr()] if
+#'   `text` is of length zero).
 #' @inheritParams re_match
 #' @return A tidy data frame (see Section \dQuote{Tidy Data}).  The list columns
 #'   contain character vectors with as many entries as there are matches for

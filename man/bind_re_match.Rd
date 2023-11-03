@@ -12,32 +12,32 @@ bind_re_match_(df, from, ..., keep_match = FALSE)
 \arguments{
 \item{df}{A data frame.}
 
-\item{from}{Name of column to use as input for \code{\link{re_match}}.
-\code{\link{bind_re_match}} takes unquoted names, while
-\code{\link{bind_re_match_}} takes quoted names.}
+\item{from}{Name of column to use as input for \code{\link[=re_match]{re_match()}}.
+\code{\link[=bind_re_match]{bind_re_match()}} takes unquoted names, while
+\code{\link[=bind_re_match_]{bind_re_match_()}} takes quoted names.}
 
 \item{...}{Arguments (including \code{pattern}) to pass to
-\code{\link{re_match}}.}
+\code{\link[=re_match]{re_match()}}.}
 
 \item{keep_match}{Should the column \code{.match} be included in the results?
 Defaults to \code{FALSE}, to avoid column name collisions in the case that
-\code{\link{bind_re_match}} is called multiple times in succession.}
+\code{\link[=bind_re_match]{bind_re_match()}} is called multiple times in succession.}
 }
 \description{
 Taking a data frame and a column name as input, this function will run
-\code{\link{re_match}} and bind the results as new columns to the original
-table., returning a \code{\link[tibble]{tibble}}. This makes it friendly for
-pipe-oriented programming with \link[magrittr]{magrittr}.
+\code{\link[=re_match]{re_match()}} and bind the results as new columns to the original
+table., returning a \code{\link[tibble:tibble]{tibble::tibble()}}. This makes it friendly for
+pipe-oriented programming with \link[magrittr:magrittr-package]{magrittr}.
 }
 \section{Functions}{
 \itemize{
-\item \code{bind_re_match_}: Standard-evaluation version that takes a quoted column name.
-}}
+\item \code{bind_re_match_()}: Standard-evaluation version that takes a quoted column name.
 
+}}
 \note{
 If named capture groups will result in multiple columns with the same
-  column name, \code{\link[tibble]{repair_names}} will be called on the
-  resulting table.
+column name, \code{\link[tibble:name-repair-superseded]{tibble::repair_names()}} will be called on the
+resulting table.
 }
 \examples{
 match_cars <- tibble::rownames_to_column(mtcars)
@@ -45,6 +45,6 @@ bind_re_match(match_cars, rowname, "^(?<make>\\\\w+) ?(?<model>.+)?$")
 
 }
 \seealso{
-Standard-evaluation version \code{\link{bind_re_match_}} that is
-  suitable for programming.
+Standard-evaluation version \code{\link[=bind_re_match_]{bind_re_match_()}} that is
+suitable for programming.
 }

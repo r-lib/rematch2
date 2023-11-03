@@ -9,31 +9,31 @@ re_match_all(text, pattern, perl = TRUE, ...)
 \arguments{
 \item{text}{Character vector.}
 
-\item{pattern}{A regular expression. See \code{\link[base]{regex}} for more
+\item{pattern}{A regular expression. See \code{\link[base:regex]{base::regex()}} for more
 about regular expressions.}
 
 \item{perl}{logical should perl compatible regular expressions be used?
 Defaults to TRUE, setting to FALSE will disable capture groups.}
 
 \item{...}{Additional arguments to pass to
-\code{\link[base]{gregexpr}} (or \code{\link[base]{regexpr}} if
+\code{\link[base:grep]{base::gregexpr()}} (or \code{\link[base:grep]{base::regexpr()}} if
 \code{text} is of length zero).}
 }
 \value{
 A tidy data frame (see Section \dQuote{Tidy Data}).  The list columns
-  contain character vectors with as many entries as there are matches for
-  each input element.
+contain character vectors with as many entries as there are matches for
+each input element.
 }
 \description{
-This function is a thin wrapper on the \code{\link[base]{gregexpr}}
+This function is a thin wrapper on the \code{\link[base:grep]{base::gregexpr()}}
 base R function, to extract the matching (sub)strings as a data frame.
 It extracts all matches, and potentially their capture groups as well.
 }
 \note{
 If the input text character vector has length zero,
-  \code{\link[base]{regexpr}} is called instead of
-  \code{\link[base]{gregexpr}}, because the latter cannot extract the
-  number and names of the capture groups in this case.
+\code{\link[base:grep]{base::regexpr()}} is called instead of
+\code{\link[base:grep]{base::gregexpr()}}, because the latter cannot extract the
+number and names of the capture groups in this case.
 }
 \section{Tidy Data}{
 

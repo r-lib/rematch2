@@ -1,25 +1,25 @@
 #' Match results from a data frame column and attach results
 #'
 #' Taking a data frame and a column name as input, this function will run
-#' \code{\link{re_match}} and bind the results as new columns to the original
-#' table., returning a \code{\link[tibble]{tibble}}. This makes it friendly for
-#' pipe-oriented programming with \link[magrittr]{magrittr}.
+#' [re_match()] and bind the results as new columns to the original
+#' table., returning a [tibble::tibble()]. This makes it friendly for
+#' pipe-oriented programming with [magrittr][magrittr::magrittr].
 #'
 #' @note If named capture groups will result in multiple columns with the same
-#'   column name, \code{\link[tibble]{repair_names}} will be called on the
+#'   column name, [tibble::repair_names()] will be called on the
 #'   resulting table.
 #'
 #' @param df A data frame.
-#' @param from Name of column to use as input for \code{\link{re_match}}.
-#'   \code{\link{bind_re_match}} takes unquoted names, while
-#'   \code{\link{bind_re_match_}} takes quoted names.
-#' @param ... Arguments (including \code{pattern}) to pass to
-#'   \code{\link{re_match}}.
-#' @param keep_match Should the column \code{.match} be included in the results?
-#'   Defaults to \code{FALSE}, to avoid column name collisions in the case that
-#'   \code{\link{bind_re_match}} is called multiple times in succession.
+#' @param from Name of column to use as input for [re_match()].
+#'   [bind_re_match()] takes unquoted names, while
+#'   [bind_re_match_()] takes quoted names.
+#' @param ... Arguments (including `pattern`) to pass to
+#'   [re_match()].
+#' @param keep_match Should the column `.match` be included in the results?
+#'   Defaults to `FALSE`, to avoid column name collisions in the case that
+#'   [bind_re_match()] is called multiple times in succession.
 #'
-#' @seealso Standard-evaluation version \code{\link{bind_re_match_}} that is
+#' @seealso Standard-evaluation version [bind_re_match_()] that is
 #'   suitable for programming.
 #'
 #' @examples
