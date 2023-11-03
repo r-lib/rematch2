@@ -33,6 +33,7 @@ Useful links:
 Other contributors:
 \itemize{
   \item Matthew Lincoln \email{matthew.d.lincoln@gmail.com} [contributor]
+  \item Posit Software, PBC [copyright holder, funder]
 }
 
 }
