@@ -42,7 +42,7 @@ package. There are at least three major changes:
     `rematch2` the `text` vector is first, and `pattern` is second.
 -   In the result, `.match` is the last column instead of the first.
 -   `rematch2` returns `tibble` data frames. See
-    <https://github.com/hadley/tibble>.
+    <https://github.com/tidyverse/tibble>.
 
 ## Usage
 
