@@ -38,8 +38,16 @@ and `gregexpr` to return the results in tidy data frames.
 
 ## Installation
 
+Stable version:
+
 ```{r eval = FALSE}
 install.packages("rematch2")
+```
+
+Development version:
+
+```{r eval = FALSE}
+pak::pak("r-lib/rematch2")
 ```
 
 ## Rematch vs rematch2

@@ -19,18 +19,26 @@ A small wrapper on regular expression matching functions `regexpr` and
 
 ------------------------------------------------------------------------
 
--   [Installation](#installation)
--   [Rematch vs rematch2](#rematch-vs-rematch2)
--   [Usage](#usage)
-    -   [First match](#first-match)
-    -   [All matches](#all-matches)
-    -   [Match positions](#match-positions)
--   [License](#license)
+- [Installation](#installation)
+- [Rematch vs rematch2](#rematch-vs-rematch2)
+- [Usage](#usage)
+  - [First match](#first-match)
+  - [All matches](#all-matches)
+  - [Match positions](#match-positions)
+- [License](#license)
 
 ## Installation
 
+Stable version:
+
 ``` r
 install.packages("rematch2")
+```
+
+Development version:
+
+``` r
+pak::pak("r-lib/rematch2")
 ```
 
 ## Rematch vs rematch2
@@ -38,11 +46,11 @@ install.packages("rematch2")
 Note that `rematch2` is not compatible with the original `rematch`
 package. There are at least three major changes:
 
--   The order of the arguments for the functions is different. In
-    `rematch2` the `text` vector is first, and `pattern` is second.
--   In the result, `.match` is the last column instead of the first.
--   `rematch2` returns `tibble` data frames. See
-    <https://github.com/tidyverse/tibble>.
+- The order of the arguments for the functions is different. In
+  `rematch2` the `text` vector is first, and `pattern` is second.
+- In the result, `.match` is the last column instead of the first.
+- `rematch2` returns `tibble` data frames. See
+  <https://github.com/tidyverse/tibble>.
 
 ## Usage
 
@@ -113,15 +121,14 @@ github_rx  <- sprintf(
 )
 re_match(text = github_repos, pattern = github_rx)
 #> # A tibble: 6 × 9
-#>   owner        repo      subdir ref           pull  release catch…¹ .text .match
-#>   <chr>        <chr>     <chr>  <chr>         <chr> <chr>   <chr>   <chr> <chr> 
-#> 1 "metacran"   "crandb"  ""     ""            ""    ""      ""      meta… metac…
-#> 2 "jeroenooms" "curl"    ""     "v0.9.3"      ""    ""      ""      jero… jeroe…
-#> 3 "jimhester"  "covr"    ""     ""            "47"  ""      ""      jimh… jimhe…
-#> 4 "hadley"     "dplyr"   ""     ""            ""    "*rele… ""      hadl… hadle…
-#> 5 "r-lib"      "remotes" ""     "550a3c7d3f9… ""    ""      ""      r-li… r-lib…
-#> 6 ""           ""        ""     ""            ""    ""      "/$&@R… /$&@… /$&@R…
-#> # … with abbreviated variable name ¹​catchall
+#>   owner        repo      subdir ref          pull  release catchall .text .match
+#>   <chr>        <chr>     <chr>  <chr>        <chr> <chr>   <chr>    <chr> <chr> 
+#> 1 "metacran"   "crandb"  ""     ""           ""    ""      ""       meta… metac…
+#> 2 "jeroenooms" "curl"    ""     "v0.9.3"     ""    ""      ""       jero… jeroe…
+#> 3 "jimhester"  "covr"    ""     ""           "47"  ""      ""       jimh… jimhe…
+#> 4 "hadley"     "dplyr"   ""     ""           ""    "*rele… ""       hadl… hadle…
+#> 5 "r-lib"      "remotes" ""     "550a3c7d3f… ""    ""      ""       r-li… r-lib…
+#> 6 ""           ""        ""     ""           ""    ""      "/$&@R6… /$&@… /$&@R…
 ```
 
 ### All matches
