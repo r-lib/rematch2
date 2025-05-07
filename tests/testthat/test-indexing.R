@@ -76,6 +76,8 @@ test_that("$ errors", {
   pos <- re_exec_val(notables, name_rex)
   allpos <- re_exec_all_val(notables, name_rex)
 
-  expect_error(pos$first$foo)
-  expect_error(allpos$first$foo)
+  expect_snapshot(error = TRUE, {
+    pos$first$foo
+    allpos$first$foo
+  })
 })
