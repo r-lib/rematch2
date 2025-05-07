@@ -34,7 +34,6 @@
 #' allpos$first$start
 #' allpos$first$end
 re_exec_all <- function(text, pattern, perl = TRUE, ...) {
-
   text <- as.character(text)
   stopifnot(is.character(pattern), length(pattern) == 1, !is.na(pattern))
 
@@ -87,10 +86,9 @@ re_exec_all <- function(text, pattern, perl = TRUE, ...) {
 }
 
 exec1 <- function(text1, match1) {
-
-  start    <- as.vector(match1)
-  length   <- attr(match1, "match.length")
-  end      <- start + length - 1L
+  start <- as.vector(match1)
+  length <- attr(match1, "match.length")
+  end <- start + length - 1L
   matchstr <- substring(text1, start, end)
   matchrec <- list(match = matchstr, start = start, end = end)
   colnames <- c(attr(match1, "capture.names"), ".match")
@@ -99,11 +97,10 @@ exec1 <- function(text1, match1) {
   ## need to handle special case
   res <- if (is.null(attr(match1, "capture.start"))) {
     replicate(length(colnames), matchrec, simplify = FALSE)
-
   } else {
-    gstart  <- unname(attr(match1, "capture.start"))
+    gstart <- unname(attr(match1, "capture.start"))
     glength <- unname(attr(match1, "capture.length"))
-    gend    <- gstart + glength - 1L
+    gend <- gstart + glength - 1L
 
     groupstr <- substring(text1, gstart, gend)
     dim(groupstr) <- dim(gstart)

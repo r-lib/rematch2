@@ -1,4 +1,3 @@
-
 #' Extract All Regular Expression Matches Into a Data Frame
 #'
 #' This function is a thin wrapper on the [base::gregexpr()]
@@ -33,16 +32,15 @@
 #' )
 #' re_match_all(notables, name_rex)
 
-re_match_all <- function(text, pattern, perl=TRUE, ...) {
-
+re_match_all <- function(text, pattern, perl = TRUE, ...) {
   text <- as.character(text)
   stopifnot(is.character(pattern), length(pattern) == 1, !is.na(pattern))
 
   ## Need to handle this case separately, as gregexpr effectively
   ## does not work for this.
-  if (length(text) == 0) return(empty_result(text, pattern, perl=perl, ...))
+  if (length(text) == 0) return(empty_result(text, pattern, perl = perl, ...))
 
-  match <- gregexpr(pattern, text, perl=perl, ...)
+  match <- gregexpr(pattern, text, perl = perl, ...)
 
   num_groups <- length(attr(match[[1]], "capture.names"))
 
@@ -78,7 +76,6 @@ re_match_all <- function(text, pattern, perl=TRUE, ...) {
 }
 
 match1 <- function(text1, match1) {
-
   matchstr <- substring(
     text1,
     match1,
@@ -89,17 +86,17 @@ match1 <- function(text1, match1) {
   ## need to handle special case
   if (is.null(attr(match1, "capture.start"))) {
     list(.match = matchstr)
-
   } else {
-    gstart  <- attr(match1, "capture.start")
+    gstart <- attr(match1, "capture.start")
     glength <- attr(match1, "capture.length")
-    gend    <- gstart + glength - 1L
+    gend <- gstart + glength - 1L
 
     groupstr <- substring(text1, gstart, gend)
     dim(groupstr) <- dim(gstart)
 
-    c(lapply(seq_len(ncol(groupstr)), function(i) groupstr[, i]),
+    c(
+      lapply(seq_len(ncol(groupstr)), function(i) groupstr[, i]),
       list(.match = matchstr)
-      )
+    )
   }
 }
