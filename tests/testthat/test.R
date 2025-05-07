@@ -1,5 +1,4 @@
 test_that("corner cases", {
-
   res <- re_match(.text <- c("foo", "bar"), "")
   expect_equal(res, df(.text = .text, .match = c("", "")))
 
@@ -30,9 +29,15 @@ test_that("corner cases", {
 
 
 test_that("not so corner cases", {
-
-  dates <- c("2016-04-20", "1977-08-08", "not a date", "2016",
-             "76-03-02", "2012-06-30", "2015-01-21 19:58")
+  dates <- c(
+    "2016-04-20",
+    "1977-08-08",
+    "not a date",
+    "2016",
+    "76-03-02",
+    "2012-06-30",
+    "2015-01-21 19:58"
+  )
   isodate <- "([0-9]{4})-([0-1][0-9])-([0-3][0-9])"
   expect_equal(
     as.data.frame(re_match(text = dates, pattern = isodate)),
@@ -60,15 +65,12 @@ test_that("not so corner cases", {
 
 
 test_that("UTF8", {
-
   res <- re_match(.text <- "Gábor Csárdi", "Gábor")
   expect_equal(res, df(.text = .text, .match = "Gábor"))
-
 })
 
 
 test_that("text is scalar & capture groups", {
-
   res <- re_match(.text <- "foo bar", "(\\w+) (\\w+)")
   expect_equal(
     as.data.frame(res),
@@ -80,5 +82,4 @@ test_that("text is scalar & capture groups", {
     res,
     df(g1 = "foo", g2 = "bar", .text = .text, .match = "foo bar")
   )
-
 })

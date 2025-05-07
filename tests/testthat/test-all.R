@@ -1,5 +1,4 @@
 test_that("corner cases", {
-
   res <- re_match_all(.text <- c("foo", "bar"), "")
   expect_equal(
     as.data.frame(res),
@@ -27,7 +26,6 @@ test_that("corner cases", {
 
 
 test_that("capture groups", {
-
   pattern <- "([0-9]+)"
 
   res <- re_match_all(
@@ -42,12 +40,10 @@ test_that("capture groups", {
       .match = list(c("123", "456"), character(), character(), "1", "123")
     )
   )
-
 })
 
 
 test_that("scalar text with capure groups", {
-
   res <- re_match_all(.text <- "foo bar", "\\b(\\w+)\\b")
   expect_equal(
     res,

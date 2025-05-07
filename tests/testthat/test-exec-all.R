@@ -1,5 +1,4 @@
 test_that("corner cases", {
-
   res <- re_exec_all_val(.text <- c("foo", "bar"), "")
   expect_equal(
     as.data.frame(res),
@@ -9,12 +8,12 @@ test_that("corner cases", {
         list(
           match = c("", "", ""),
           start = c(1L, 2L, 3L),
-          end   = c(0L, 1L, 2L)
+          end = c(0L, 1L, 2L)
         ),
         list(
           match = c("", "", ""),
           start = c(1L, 2L, 3L),
-          end   = c(0L, 1L, 2L)
+          end = c(0L, 1L, 2L)
         )
       )
     )
@@ -29,12 +28,12 @@ test_that("corner cases", {
         list(
           match = "",
           start = 1L,
-          end   = 0L
+          end = 0L
         ),
         list(
           match = c("", "", ""),
           start = c(1L, 2L, 3L),
-          end   = c(0L, 1L, 2L)
+          end = c(0L, 1L, 2L)
         )
       )
     )
@@ -58,7 +57,6 @@ test_that("corner cases", {
 
 
 test_that("capture groups", {
-
   pattern <- "([0-9]+)"
 
   res <- re_exec_all_val(
@@ -69,22 +67,26 @@ test_that("capture groups", {
     as.data.frame(res),
     asdf(
       allreclist(
-        mrec(c("123", "456"), c(1L, 8L), c(3L, 10L)), norec(), norec(),
-        mrec("1", 1L, 1L), mrec("123", 1, 3)
+        mrec(c("123", "456"), c(1L, 8L), c(3L, 10L)),
+        norec(),
+        norec(),
+        mrec("1", 1L, 1L),
+        mrec("123", 1, 3)
       ),
       .text = .text,
       .match = allreclist(
-        mrec(c("123", "456"), c(1L, 8L), c(3L, 10L)), norec(), norec(),
-        mrec("1", 1L, 1L), mrec("123", 1, 3)
+        mrec(c("123", "456"), c(1L, 8L), c(3L, 10L)),
+        norec(),
+        norec(),
+        mrec("1", 1L, 1L),
+        mrec("123", 1, 3)
       )
     )
   )
-
 })
 
 
 test_that("scalar text with capure groups", {
-
   res <- re_exec_all_val(.text <- "foo bar", "\\b(\\w+)\\b")
   expect_equal(
     as.data.frame(res),
@@ -104,5 +106,4 @@ test_that("scalar text with capure groups", {
       .match = allreclist(mrec(c("foo", "bar"), c(1L, 5L), c(3L, 7L)))
     )
   )
-
 })

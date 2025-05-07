@@ -57,21 +57,20 @@
 #' pos$first$start
 #' pos$first$end
 
-re_exec <- function(text, pattern, perl=TRUE, ...) {
-
+re_exec <- function(text, pattern, perl = TRUE, ...) {
   stopifnot(is.character(pattern), length(pattern) == 1, !is.na(pattern))
   text <- as.character(text)
 
   match <- regexpr(pattern, text, perl = perl, ...)
 
-  start  <- as.vector(match)
+  start <- as.vector(match)
   length <- attr(match, "match.length")
-  end    <- start + length - 1L
+  end <- start + length - 1L
 
   matchstr <- substring(text, start, end)
-  matchstr[ start == -1 ] <- NA_character_
-  end     [ start == -1 ] <- NA_integer_
-  start   [ start == -1 ] <- NA_integer_
+  matchstr[start == -1] <- NA_character_
+  end[start == -1] <- NA_integer_
+  start[start == -1] <- NA_integer_
 
   names <- c("match", "start", "end")
 
@@ -88,15 +87,14 @@ re_exec <- function(text, pattern, perl=TRUE, ...) {
   )
 
   if (!is.null(attr(match, "capture.start"))) {
-
-    gstart  <- unname(attr(match, "capture.start"))
+    gstart <- unname(attr(match, "capture.start"))
     glength <- unname(attr(match, "capture.length"))
-    gend    <- gstart + glength - 1L
+    gend <- gstart + glength - 1L
 
     groupstr <- substring(text, gstart, gend)
-    groupstr[ gstart == -1 ] <- NA_character_
-    gend    [ gstart == -1 ] <- NA_integer_
-    gstart  [ gstart == -1 ] <- NA_integer_
+    groupstr[gstart == -1] <- NA_character_
+    gend[gstart == -1] <- NA_integer_
+    gstart[gstart == -1] <- NA_integer_
     dim(groupstr) <- dim(gstart)
 
     grouplists <- lapply(

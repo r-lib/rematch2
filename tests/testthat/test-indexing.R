@@ -1,5 +1,4 @@
 test_that("re_exec_val intexing", {
-
   res <- re_exec_val(character(), "foo([0-9]+)")
   expect_identical(res[[1]]$match, character())
   expect_identical(res[[1]]$start, integer())
@@ -33,7 +32,6 @@ test_that("re_exec_val intexing", {
 })
 
 test_that("re_exec_all_val indexing", {
-
   name_rex <- paste0(
     "(?<first>[[:upper:]][[:lower:]]+) ",
     "(?<last>[[:upper:]][[:lower:]]+)"
@@ -67,7 +65,6 @@ test_that("re_exec_all_val indexing", {
 })
 
 test_that("$ errors", {
-
   name_rex <- paste0(
     "(?<first>[[:upper:]][[:lower:]]+) ",
     "(?<last>[[:upper:]][[:lower:]]+)"
@@ -79,6 +76,8 @@ test_that("$ errors", {
   pos <- re_exec_val(notables, name_rex)
   allpos <- re_exec_all_val(notables, name_rex)
 
-  expect_error(pos$first$foo)
-  expect_error(allpos$first$foo)
+  expect_snapshot(error = TRUE, {
+    pos$first$foo
+    allpos$first$foo
+  })
 })

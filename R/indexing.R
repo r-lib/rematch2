@@ -1,10 +1,9 @@
-
 #' @rdname re_exec
 #' @export $.rematch_records
 #' @export
 
 `$.rematch_records` <- function(x, name) {
-  if (! name %in% c("match", "start", "end")) {
+  if (!name %in% c("match", "start", "end")) {
     stop("'$' match selector must refer to 'match', 'start' or 'end'")
   }
 
@@ -16,7 +15,7 @@
 #' @export
 
 `$.rematch_allrecords` <- function(x, name) {
-  if (! name %in% c("match", "start", "end")) {
+  if (!name %in% c("match", "start", "end")) {
     stop("'$' match selector must refer to 'match', 'start' or 'end'")
   }
 

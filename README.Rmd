@@ -4,7 +4,9 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r setup, include = FALSE}
+```{r}
+#| label: setup
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -40,13 +42,15 @@ and `gregexpr` to return the results in tidy data frames.
 
 Stable version:
 
-```{r eval = FALSE}
+```{r}
+#| eval: false
 install.packages("rematch2")
 ```
 
 Development version:
 
-```{r eval = FALSE}
+```{r}
+#| eval: false
 pak::pak("r-lib/rematch2")
 ```
 
