@@ -6,8 +6,10 @@
 > Match Regular Expressions with a Nicer ‘API’
 
 <!-- badges: start -->
+
 [![R-CMD-check](https://github.com/r-lib/rematch2/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-lib/rematch2/actions/workflows/R-CMD-check.yaml)
-[![Codecov test coverage](https://codecov.io/gh/r-lib/rematch2/graph/badge.svg)](https://app.codecov.io/gh/r-lib/rematch2)
+[![Codecov test
+coverage](https://codecov.io/gh/r-lib/rematch2/graph/badge.svg)](https://app.codecov.io/gh/r-lib/rematch2)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/rematch2)](https://CRAN.R-project.org/package=rematch2)
 <!-- badges: end -->
@@ -17,13 +19,13 @@ A small wrapper on regular expression matching functions `regexpr` and
 
 ------------------------------------------------------------------------
 
-- [Installation](#installation)
-- [Rematch vs rematch2](#rematch-vs-rematch2)
-- [Usage](#usage)
-  - [First match](#first-match)
-  - [All matches](#all-matches)
-  - [Match positions](#match-positions)
-- [License](#license)
+-   [Installation](#installation)
+-   [Rematch vs rematch2](#rematch-vs-rematch2)
+-   [Usage](#usage)
+    -   [First match](#first-match)
+    -   [All matches](#all-matches)
+    -   [Match positions](#match-positions)
+-   [License](#license)
 
 ## Installation
 
@@ -44,11 +46,11 @@ pak::pak("r-lib/rematch2")
 Note that `rematch2` is not compatible with the original `rematch`
 package. There are at least three major changes:
 
-- The order of the arguments for the functions is different. In
-  `rematch2` the `text` vector is first, and `pattern` is second.
-- In the result, `.match` is the last column instead of the first.
-- `rematch2` returns `tibble` data frames. See
-  <https://github.com/tidyverse/tibble>.
+-   The order of the arguments for the functions is different. In
+    `rematch2` the `text` vector is first, and `pattern` is second.
+-   In the result, `.match` is the last column instead of the first.
+-   `rematch2` returns `tibble` data frames. See
+    <https://github.com/tidyverse/tibble>.
 
 ## Usage
 
